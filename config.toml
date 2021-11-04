@@ -1,0 +1,7 @@
+baseURL = "https://kan-bayashi.github.io/icassp2022-streaming-vc/"
+languageCode = "en-us"
+title = "ICASSP2022 Straming NAR-S2S VC"
+theme = "paper"
+
+[markup.goldmark.renderer]
+unsafe= true

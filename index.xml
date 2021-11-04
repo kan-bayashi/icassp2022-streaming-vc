@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ICASSP2022 Straming NAR-S2S VC</title>
+    <title>ICASSP2022 Streaming NAR-S2S VC</title>
     <link>https://kan-bayashi.github.io/icassp2022-streaming-vc/</link>
-    <description>Recent content on ICASSP2022 Straming NAR-S2S VC</description>
+    <description>Recent content on ICASSP2022 Streaming NAR-S2S VC</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://kan-bayashi.github.io/icassp2022-streaming-vc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>https://kan-bayashi.github.io/icassp2022-streaming-vc/</link>
-      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 03 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://kan-bayashi.github.io/icassp2022-streaming-vc/</guid>
       <description>An investigation of streaming non-autoregressive sequence-to-sequence voice conversion  Tomoki Hayashi (TARVO Inc. / Nagoya University) Kazuhiro Kobayashi (TARVO Inc. / Nagoya University) Tomoki Toda (Nagoya University)  Abstract Recent advances in sequence-to-sequence (S2S) models have improved the quality of voice conversion (VC), but it requires an entire sequence to perform inference, which prevents using it in real-time applications. To address this issue, this paper extends the non-autoregressive (NAR) S2S-VC model to enable us to perform streaming VC.</description>

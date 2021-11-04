@@ -17,11 +17,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   
-  <title>ICASSP2022 Straming NAR-S2S VC</title>
+  <title> - ICASSP2022 Straming NAR-S2S VC</title>
 
   
   
-  <meta name="description" content="" />
+  <meta name="description" content="An investigation of streaming non-autoregressive sequence-to-sequence voice conversion  Tomoki Hayashi (TARVO Inc. / Nagoya University) Kazuhiro Kobayashi (TARVO Inc. / Nagoya University) Tomoki Toda (Nagoya University)  Abstract Recent advances in sequence-to-sequence (S2S) models have improved the quality of voice conversion (VC), but it requires an entire sequence to perform inference, which prevents using it in real-time applications. To address this issue, this paper extends the non-autoregressive (NAR) S2S-VC model to enable us to perform streaming VC." />
   <meta name="author" content="" />
   
 
@@ -33,6 +33,13 @@
   
   <link rel="preload stylesheet" as="style" href="https://kan-bayashi.github.io/icassp2022-streaming-vc/app.min.css" />
 
+  
+  <link rel="preload stylesheet" as="style" href="https://kan-bayashi.github.io/icassp2022-streaming-vc/an-old-hope.min.css" />
+  <script
+    defer
+    src="https://kan-bayashi.github.io/icassp2022-streaming-vc/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
   
 
   
@@ -49,13 +56,6 @@
 
   
   
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://kan-bayashi.github.io/icassp2022-streaming-vc/index.xml"
-    title="ICASSP2022 Straming NAR-S2S VC"
-  />
-  
 
   
   
@@ -64,20 +64,28 @@
   
   
   
-  <meta property="og:title" content="ICASSP2022 Straming NAR-S2S VC" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
+  <meta property="og:title" content="" />
+<meta property="og:description" content="An investigation of streaming non-autoregressive sequence-to-sequence voice conversion  Tomoki Hayashi (TARVO Inc. / Nagoya University) Kazuhiro Kobayashi (TARVO Inc. / Nagoya University) Tomoki Toda (Nagoya University)  Abstract Recent advances in sequence-to-sequence (S2S) models have improved the quality of voice conversion (VC), but it requires an entire sequence to perform inference, which prevents using it in real-time applications. To address this issue, this paper extends the non-autoregressive (NAR) S2S-VC model to enable us to perform streaming VC." />
+<meta property="og:type" content="article" />
 <meta property="og:url" content="https://kan-bayashi.github.io/icassp2022-streaming-vc/" />
-
+<meta property="article:published_time" content="2021-11-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-11-01T00:00:00+00:00" />
 
   
-  <meta itemprop="name" content="ICASSP2022 Straming NAR-S2S VC">
-<meta itemprop="description" content="">
+  <meta itemprop="name" content="">
+<meta itemprop="description" content="An investigation of streaming non-autoregressive sequence-to-sequence voice conversion  Tomoki Hayashi (TARVO Inc. / Nagoya University) Kazuhiro Kobayashi (TARVO Inc. / Nagoya University) Tomoki Toda (Nagoya University)  Abstract Recent advances in sequence-to-sequence (S2S) models have improved the quality of voice conversion (VC), but it requires an entire sequence to perform inference, which prevents using it in real-time applications. To address this issue, this paper extends the non-autoregressive (NAR) S2S-VC model to enable us to perform streaming VC.">
+<meta itemprop="datePublished" content="2021-11-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-11-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="365">
+
+
+
+<meta itemprop="keywords" content="" />
 
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ICASSP2022 Straming NAR-S2S VC"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="An investigation of streaming non-autoregressive sequence-to-sequence voice conversion  Tomoki Hayashi (TARVO Inc. / Nagoya University) Kazuhiro Kobayashi (TARVO Inc. / Nagoya University) Tomoki Toda (Nagoya University)  Abstract Recent advances in sequence-to-sequence (S2S) models have improved the quality of voice conversion (VC), but it requires an entire sequence to perform inference, which prevents using it in real-time applications. To address this issue, this paper extends the non-autoregressive (NAR) S2S-VC model to enable us to perform streaming VC."/>
 
   
   
@@ -87,9 +95,9 @@
   <body class="not-ready" data-menu="false">
     <header class="header">
   
-  <h1 class="logo">
+  <p class="logo">
     <a class="site-name" href="https://kan-bayashi.github.io/icassp2022-streaming-vc/">ICASSP2022 Straming NAR-S2S VC</a><a class="btn-dark"></a>
-  </h1>
+  </p>
   
 
   <script>
@@ -119,21 +127,299 @@
 
     <main class="main">
 
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      <time>:date_medium</time>
+      
+    </p>
+    <h1></h1>
+  </header>
+  <section class="post-content"><h1 id="an-investigation-of-streaming-non-autoregressive-sequence-to-sequence-voice-conversion">An investigation of streaming non-autoregressive sequence-to-sequence voice conversion</h1>
+<ul>
+<li>Tomoki Hayashi (TARVO Inc. / Nagoya University)</li>
+<li>Kazuhiro Kobayashi (TARVO Inc. / Nagoya University)</li>
+<li>Tomoki Toda (Nagoya University)</li>
+</ul>
+<h2 id="abstract">Abstract</h2>
+<p>Recent advances in sequence-to-sequence (S2S) models have improved the quality of voice conversion (VC), but it requires an entire sequence to perform inference, which prevents using it in real-time applications. To address this issue, this paper extends the non-autoregressive (NAR) S2S-VC model to enable us to perform streaming VC. We introduce streamable architecture such as a causal convolution and a self-attention with causal masking for the FastSpeech2-based NAR-S2S-VC model. This streamable architecture also tries to convert durations, which are kept as is in conventional real-time VC methods. To further improve the performance of the streaming VC model, we utilize an instant knowledge distillation with a dual-mode architecture, which performs non-causal and causal inference by sharing the network parameters. Through the experimental evaluation with Japanese parallel corpus, we investigate the impact on performance caused by the streamable architecture. The experimental results reveal that the use of future context frames increases latency, but it improves the conversion quality, and that difference in the speaking rate affects the performance of streaming inference.</p>
+<h2 id="audio-samples-japanese">Audio samples (Japanese)</h2>
+<ul>
+<li><strong>Source</strong>: Source speech (24,000 Hz).</li>
+<li><strong>Target</strong>: Target speech (24,000 Hz).</li>
+<li><strong>Non-causal</strong>: Converted speech by non-causal Conformer FastSpeech2 (CFS2) + non-causal parallel wavegan (PWG)</li>
+<li><strong>Causal (k=0)</strong>: Converted speech by causal CFS2 + causal PWG</li>
+<li><strong>Causal (k=2)</strong>: Converted speech by causal CFS2 with 2 future frames + causal PWG</li>
+<li><strong>Causal (k=2) + Knowledge dist.</strong>: Causal (k=2) + Instant Knowledge distillation</li>
+</ul>
+<h3 id="male-to-female-conversion">Male to female conversion</h3>
+<h4 id="たとえばプログラムを書く仕事は機械なしでもやろうと思えばできる">たとえば、プログラムを書く仕事は、機械なしでも、やろうと思えばできる。</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_gt/ETRAB00976.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_gt/ETRAB00976.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Non-causal</strong></td>
+<td><strong>Causal (k=0)</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_noncausal_pwg/ETRAB00976.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_causal_cpwg_hfd/ETRAB00976.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Causal (k=2)</strong></td>
+<td><strong>Causal (k=2) + Knowledge dist.</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_causal_future_cpwg_hfd/ETRAB00976.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_switch_causal_future_cpwg_hfd/ETRAB00976.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h4 id="そのうちに日が暮れて寒い風がヒューヒュー吹きはじめました">そのうちに、日が暮れて、寒い風が、ヒューヒュー、吹きはじめました。</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_gt/ETRAB00982.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_gt/ETRAB00982.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Non-causal</strong></td>
+<td><strong>Causal (k=0)</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_noncausal_pwg/ETRAB00982.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_causal_cpwg_hfd/ETRAB00982.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Causal (k=2)</strong></td>
+<td><strong>Causal (k=2) + Knowledge dist.</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_causal_future_cpwg_hfd/ETRAB00982.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_switch_causal_future_cpwg_hfd/ETRAB00982.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h4 id="小柄な男は部屋の中をしげしげと覗き込みながら言った">小柄な男は、部屋の中を、しげしげと、覗き込みながら言った。</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_gt/ETRAB00990.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_gt/ETRAB00990.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Non-causal</strong></td>
+<td><strong>Causal (k=0)</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_noncausal_pwg/ETRAB00990.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_causal_cpwg_hfd/ETRAB00990.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Causal (k=2)</strong></td>
+<td><strong>Causal (k=2) + Knowledge dist.</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_causal_future_cpwg_hfd/ETRAB00990.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/hazumi_switch_causal_future_cpwg_hfd/ETRAB00990.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h3 id="female-to-male-conversion">Female to male conversion</h3>
+<h4 id="たとえばプログラムを書く仕事は機械なしでもやろうと思えばできる-1">たとえば、プログラムを書く仕事は、機械なしでも、やろうと思えばできる。</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_gt/ETRAB00976.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_gt/ETRAB00976.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Non-causal</strong></td>
+<td><strong>Causal (k=0)</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_noncausal_pwg/ETRAB00976.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_causal_cpwg_hfd/ETRAB00976.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Causal (k=2)</strong></td>
+<td><strong>Causal (k=2) + Knowledge dist.</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_causal_future_cpwg_hfd/ETRAB00976.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_switch_causal_future_cpwg_hfd/ETRAB00976.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h4 id="そのうちに日が暮れて寒い風がヒューヒュー吹きはじめました-1">そのうちに、日が暮れて、寒い風が、ヒューヒュー、吹きはじめました。</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_gt/ETRAB00982.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_gt/ETRAB00982.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Non-causal</strong></td>
+<td><strong>Causal (k=0)</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_noncausal_pwg/ETRAB00982.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_causal_cpwg_hfd/ETRAB00982.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Causal (k=2)</strong></td>
+<td><strong>Causal (k=2) + Knowledge dist.</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_causal_future_cpwg_hfd/ETRAB00982.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_switch_causal_future_cpwg_hfd/ETRAB00982.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h4 id="小柄な男は部屋の中をしげしげと覗き込みながら言った-1">小柄な男は、部屋の中を、しげしげと、覗き込みながら言った。</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/hazumi_gt/ETRAB00990.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_gt/ETRAB00990.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Non-causal</strong></td>
+<td><strong>Causal (k=0)</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_noncausal_pwg/ETRAB00990.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_causal_cpwg_hfd/ETRAB00990.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Causal (k=2)</strong></td>
+<td><strong>Causal (k=2) + Knowledge dist.</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/ashela_causal_future_cpwg_hfd/ETRAB00990.wav"/></audio></td>
+<td><audio controls="" ><source src="wav/ashela_switch_causal_future_cpwg_hfd/ETRAB00990.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h3 id="controllability-analysis">Controllability analysis</h3>
+<p><img src="figs/example.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Source</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/example/src.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/example/tgt.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Conversion</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/example/conv.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Conversion with fixed duration</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/example/src_dur_fixed_conv.wav"/></audio></td>
+</tr>
+<tr>
+<td><strong>Conversion with fixed pitch, energy, and duration</strong></td>
+</tr>
+<tr>
+<td><audio controls="" ><source src="wav/example/src_all_fixed_conv.wav"/></audio></td>
+</tr>
+</tbody>
+</table>
+<h2 id="author">Author</h2>
+<p>Tomoki Hayashi (<a href="https://github.com/kan-bayashi">@kan-bayashi</a>)<br>
+e-mail: <a href="mailto:hayashi.tomoki@g.sp.m.is.nagoya-u.ac.jp">hayashi.tomoki@g.sp.m.is.nagoya-u.ac.jp</a></p>
+</section>
 
+  
+  
 
-<h1 class="main-title">ICASSP2022 Straming NAR-S2S VC</h1>
+  
+  
+  
 
-
-
-
- 
-
-
-
- 
-
-
-
+  
+  
+</article>
 
 </main>
 
